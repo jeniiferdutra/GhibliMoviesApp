@@ -15,10 +15,30 @@ class MovieCollectionViewCellScreen: UIView {
         view.backgroundColor = .blue
         return view
     }()
+    
+    lazy var collectionView: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.showsHorizontalScrollIndicator = false
+        // TO DO REGISTER
+        cv.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        cv.backgroundColor = .yellow
+        return cv
+    }()
+    
+    public func configProtocolsCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(containerView)
+        containerView.addSubview(collectionView)
+        collectionView.pin(to: containerView)
         configConstraints()
     }
     

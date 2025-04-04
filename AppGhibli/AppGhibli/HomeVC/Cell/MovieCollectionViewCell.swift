@@ -16,6 +16,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configScreen()
+        screen.configProtocolsCollectionView(delegate: self, dataSource: self)
     }
     
     required init?(coder: NSCoder) {
@@ -25,5 +26,19 @@ class MovieCollectionViewCell: UICollectionViewCell {
     private func configScreen() {
         contentView.addSubview(screen)
         screen.pin(to: contentView)
+    }
+}
+
+extension MovieCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 }
