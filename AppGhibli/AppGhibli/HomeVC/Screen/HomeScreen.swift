@@ -17,7 +17,8 @@ class HomeScreen: UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.showsHorizontalScrollIndicator = false
         // TO DO: REGISTER
-        cv.backgroundColor = .red
+        cv.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        cv.backgroundColor = .clear
         return cv
     }()
     
