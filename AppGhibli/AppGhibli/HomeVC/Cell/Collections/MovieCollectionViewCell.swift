@@ -13,6 +13,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     private var screen: MovieCollectionViewCellScreen = MovieCollectionViewCellScreen()
     
+    private var viewModel: MovieViewModel?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configScreen()
@@ -27,14 +29,22 @@ class MovieCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(screen)
         screen.pin(to: contentView)
     }
+    
+    public func setupCell(listMovies: [Movies]) {
+        viewModel = MovieViewModel(listMovies: listMovies)
+        screen.collectionView.reloadData()
+    }
 }
 
 extension MovieCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        viewModel?.numberOfItems ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let viewModel = viewModel else { return UICollectionViewCell() }
+        
         return UICollectionViewCell()
     }
     
