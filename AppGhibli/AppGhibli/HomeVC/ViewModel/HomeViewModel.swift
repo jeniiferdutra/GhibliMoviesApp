@@ -10,11 +10,11 @@ import UIKit
 class HomeViewModel {
     
     private var movies = [
-        Movies(movieName: "chihiro", movieImage: "Spirited Away"),
-        Movies(movieName: "howls", movieImage: "Howl's Moving Castle"),
-        Movies(movieName: "marnie", movieImage: "Omoide no Mânî"),
-        Movies(movieName: "mononoke", movieImage: "Princess Mononoke"),
-        Movies(movieName: "totoro", movieImage: "Tonari no Totoro")
+        Movies(movieName: "Spirited Away", movieImage: "chihiro"),
+        Movies(movieName: "Howl's Moving Castle", movieImage: "holws"),
+        Movies(movieName: "Omoide no Mânî", movieImage: "marnie"),
+        Movies(movieName: "Princess Mononoke", movieImage: "mononoke"),
+        Movies(movieName: "Tonari no Totoro", movieImage: "totoro")
     ]
     
     public var getListMovies: [Movies] {

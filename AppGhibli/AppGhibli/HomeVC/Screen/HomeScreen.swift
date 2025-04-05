@@ -9,6 +9,16 @@ import UIKit
 
 class HomeScreen: UIView {
     
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Studio Ghibli"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+    
     lazy var collectionView: UICollectionView = { // Criacao da Collection
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -29,7 +39,8 @@ class HomeScreen: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
+        backgroundColor = UIColor(red: 19/255, green: 18/255, blue: 19/255, alpha: 0.86)
+        addSubview(titleLabel)
         addSubview(collectionView)
         configConstraints()
     }
@@ -39,6 +50,17 @@ class HomeScreen: UIView {
     }
     
     private func configConstraints() {
-        collectionView.pin(to: self)
+        //collectionView.pin(to: self)
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
