@@ -45,10 +45,16 @@ extension MovieCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
         
         guard let viewModel = viewModel else { return UICollectionViewCell() }
         
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieItemCollectionViewCell.identifier, for: indexPath) as? MovieItemCollectionViewCell
+        cell?.setupCell(data: viewModel.loadCurrentStory(indexPath: indexPath))
+        return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(width: 160, height: 240)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8 // Adiciona espaçamento horizontal
     }
 }

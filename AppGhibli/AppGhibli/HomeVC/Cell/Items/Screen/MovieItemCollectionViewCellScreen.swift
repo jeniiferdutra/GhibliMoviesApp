@@ -13,6 +13,8 @@ class MovieItemCollectionViewCellScreen: UIView {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
         img.contentMode = .scaleAspectFill
+        img.layer.cornerRadius = 5
+        img.clipsToBounds = true
         return img
     }()
     
@@ -20,7 +22,8 @@ class MovieItemCollectionViewCellScreen: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
     }()
 
@@ -29,6 +32,7 @@ class MovieItemCollectionViewCellScreen: UIView {
         addSubview(movieImageView)
         addSubview(titleLabel)
         configConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -38,14 +42,15 @@ class MovieItemCollectionViewCellScreen: UIView {
     private func configConstraints() {
         NSLayoutConstraint.activate([
             
-            movieImageView.widthAnchor.constraint(equalToConstant: 100),
-            movieImageView.heightAnchor.constraint(equalToConstant: 100),
-            movieImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            movieImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            movieImageView.topAnchor.constraint(equalTo: topAnchor),
+            movieImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            movieImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            movieImageView.heightAnchor.constraint(equalToConstant: 210),
             
             titleLabel.topAnchor.constraint(equalTo: movieImageView.bottomAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -8)
             
         ])
     }

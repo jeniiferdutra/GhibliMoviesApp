@@ -12,7 +12,7 @@ class MovieCollectionViewCellScreen: UIView {
     lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
+        //view.backgroundColor = .white
         return view
     }()
     
@@ -24,8 +24,9 @@ class MovieCollectionViewCellScreen: UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.showsHorizontalScrollIndicator = false
         // TO DO REGISTER
-        cv.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-        cv.backgroundColor = .yellow
+        cv.register(MovieItemCollectionViewCell.self, forCellWithReuseIdentifier: MovieItemCollectionViewCell.identifier)
+        cv.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        cv.backgroundColor = .clear
         return cv
     }()
     
